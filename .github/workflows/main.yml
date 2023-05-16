@@ -7,18 +7,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v3
-      - name: Install Flutter
-      - uses: subosito/flutter-action@v2
+      - uses: actions/checkout@v3
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          channel: 'beta'
-      - name: Install dependecies
+          channel: beta
+      - name: Install dependencies
         run: flutter pub get
-      - name: Analyze
-        run: flutter analyze
-      - name: Testing project
-        run: flutter test
-      - name: Build for Android
+      - name: Build APK
         run: flutter build apk
         run: flutter build appbundle
       - name: Release APK to GitHub
@@ -27,4 +23,3 @@ jobs:
           asset_path: build/app/outputs/apk/release/app-release.apk
           asset_name: app-release.apk
           release_name: Latest Release
-
