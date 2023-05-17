@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_frontend/themes.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
   Widget header() {
     return Container(
       margin: EdgeInsets.only(top: 30),
@@ -166,10 +171,18 @@ class SignInPage extends StatelessWidget {
               fontSize: 12,
             ),
           ),
-          Text(
-            'Sign Up',
-            style: purpleColor.copyWith(fontSize: 12, fontWeight: medium),
-          )
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/sign-up');
+            },
+            child: Text(
+              'Sign Up',
+              style: purpleTextStyle.copyWith(
+                fontSize: 12,
+                fontWeight: medium,
+              ),
+            ),
+          ),
         ],
       ),
     );

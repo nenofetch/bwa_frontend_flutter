@@ -30,7 +30,7 @@ TextStyle subtitleTextStyle = GoogleFonts.poppins(
   color: subtitleColor,
 );
 
-TextStyle purpleColor = GoogleFonts.poppins(
+TextStyle purpleTextStyle = GoogleFonts.poppins(
   color: primaryColor,
 );
 
