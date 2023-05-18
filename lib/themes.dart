@@ -14,6 +14,7 @@ Color backgroundColor4 = const Color(0xff252836);
 Color primaryTextColor = const Color(0xffF1F0F2);
 Color secondaryTextColor = const Color(0xff999999);
 Color subtitleColor = const Color(0xff504F5E);
+Color popularProductsColor = const Color(0xff2E2E2E);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
   color: primaryTextColor,
@@ -33,6 +34,10 @@ TextStyle subtitleTextStyle = GoogleFonts.poppins(
 
 TextStyle purpleTextStyle = GoogleFonts.poppins(
   color: primaryColor,
+);
+
+TextStyle popularProductsTextStyle = GoogleFonts.poppins(
+  color: popularProductsColor,
 );
 
 FontWeight light = FontWeight.w300;
