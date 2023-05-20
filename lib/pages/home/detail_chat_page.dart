@@ -156,6 +156,7 @@ class DetailChatPage extends StatelessWidget {
         ChatBubble(
           isSender: true,
           text: "Hi, This item is still available?",
+          hasProduct: true,
         ),
         ChatBubble(
           isSender: false,
