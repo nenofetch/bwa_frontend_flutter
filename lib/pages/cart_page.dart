@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_frontend/themes.dart';
 
+import '../widgets/cart_card.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
@@ -52,7 +54,8 @@ class CartPage extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(context, '/home', (route) => false)
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/home', (route) => false);
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: primaryColor,
@@ -74,10 +77,17 @@ class CartPage extends StatelessWidget {
       );
     }
 
+    Widget content() {
+      return ListView(
+        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        children: [CartCard()],
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor3,
       appBar: header(),
-      body: emptyCart(),
+      body: content(),
     );
   }
 }

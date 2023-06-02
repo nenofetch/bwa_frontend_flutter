@@ -42,6 +42,10 @@ TextStyle popularProductsTextStyle = GoogleFonts.poppins(
   color: popularProductsColor,
 );
 
+TextStyle alertTextStyle = GoogleFonts.poppins(
+  color: alertColor,
+);
+
 FontWeight light = FontWeight.w300;
 FontWeight reguler = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
