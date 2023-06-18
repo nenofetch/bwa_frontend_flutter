@@ -7,7 +7,7 @@ class ProductService {
   String baseUrl = 'myapi.justnear.my.id';
 
   Future<List<ProductModel>> getProducts() async {
-    var url = Uri.https(baseUrl, '/products');
+    var url = Uri.https(baseUrl, 'api/products');
     var headers = {'Content-Type': 'application/json'};
 
     var response = await http.get(url, headers: headers);
