@@ -1,12 +1,13 @@
-class CatagoryModel {
+class CategoryModel {
   int? id;
   String? name;
 
-  CatagoryModel({
+  CategoryModel({
     this.id,
     this.name,
   });
-  CatagoryModel.fromJson(Map<String, dynamic> json) {
+
+  CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
   }
