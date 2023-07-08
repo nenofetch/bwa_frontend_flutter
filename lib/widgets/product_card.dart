@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shamo_frontend/models/product_model.dart';
 import 'package:shamo_frontend/themes.dart';
 
-import '../models/category_model.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
