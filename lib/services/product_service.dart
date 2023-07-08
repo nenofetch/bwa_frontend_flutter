@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shamo_frontend/models/product_model.dart';
 
 class ProductService {
-  String baseUrl = 'myapi.justnear.my.id';
+  String baseUrl = 'shamo-backend.buildwithangga.id';
 
   Future<List<ProductModel>> getProducts() async {
     var url = Uri.https(baseUrl, 'api/products');
@@ -15,12 +15,14 @@ class ProductService {
     if (response.statusCode == 200) {
       List data = jsonDecode(response.body)['data']['data'];
       List<ProductModel> products = [];
+
       for (var item in data) {
         products.add(ProductModel.fromJson(item));
       }
+
       return products;
     } else {
-      throw Exception('Failed Get Products');
+      throw Exception('Failed Get Products!');
     }
   }
 }
