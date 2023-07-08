@@ -8,7 +8,7 @@ class ProductProvider with ChangeNotifier {
 
   set products(List<ProductModel> products) {
     _products = products;
-    ChangeNotifier();
+    notifyListeners();
   }
 
   Future<void> getProducts() async {
