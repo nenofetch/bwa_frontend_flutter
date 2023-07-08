@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo_frontend/models/user_model.dart';
 import 'package:shamo_frontend/providers/auth_provider.dart';
+import 'package:shamo_frontend/providers/product_provider.dart';
 import 'package:shamo_frontend/themes.dart';
 import 'package:shamo_frontend/widgets/product_card.dart';
 import 'package:shamo_frontend/widgets/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -40,13 +44,20 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: 54,
-              height: 54,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(user.profilePhotoUrl!),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/edit-profile');
+              },
+              child: Container(
+                width: 54,
+                height: 54,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      user.profilePhotoUrl!,
+                    ),
+                  ),
                 ),
               ),
             )
@@ -192,7 +203,7 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget popularProducts() {
+   Widget popularProducts() {
       return Container(
         margin: EdgeInsets.only(top: 14),
         child: SingleChildScrollView(
@@ -203,12 +214,12 @@ class HomePage extends StatelessWidget {
                 width: defaultMargin,
               ),
               Row(
-                children: [
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                ],
-              )
+                children: productProvider.products
+                    .map(
+                      (product) => ProductCard(product),
+                    )
+                    .toList(),
+              ),
             ],
           ),
         ),
@@ -234,12 +245,9 @@ class HomePage extends StatelessWidget {
 
     Widget newArrivals() {
       return Column(
-        children: [
-          ProductTile(),
-          ProductTile(),
-          ProductTile(),
-          ProductTile(),
-        ],
+        children: productProvider.products
+        .map((product) => ProductTile(product))
+        .toList(),
       );
     }
 

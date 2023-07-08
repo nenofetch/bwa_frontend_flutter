@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_frontend/themes.dart';
 
+import '../models/product_model.dart';
+
 class ProductTile extends StatelessWidget {
-  const ProductTile({super.key});
+  final ProductModel product;
+
+  ProductTile(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +24,8 @@ class ProductTile extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/image_shoes.png',
+              child: Image.network(
+                product.galleries![0].url!,
                 width: 120,
                 height: 120,
               ),
@@ -34,7 +38,7 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Running',
+                    product.category!.name!,
                     style: secondaryTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: reguler,
@@ -44,7 +48,7 @@ class ProductTile extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    'Ultra 4D 5 Shoes',
+                    product.name!,
                     style: primaryTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: semiBold,
@@ -54,7 +58,7 @@ class ProductTile extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    '\$285,73',
+                    '\$${product.price!}',
                     style: priceTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: medium,
